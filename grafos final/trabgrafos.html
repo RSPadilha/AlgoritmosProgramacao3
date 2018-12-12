@@ -2,6 +2,14 @@
 <html>
 <body>
 <h1>Grafos</h1>
+<pre>
+A partir de um vértice V, que representa a raiz da árvore T,
+Enquanto houverem conexões entre a arvore T e o grafo G:
+    Retire do grafo G o vértice U ligado a árvore T pela aresta E de menor custo.
+    Adicione o vértice U à árvore T, ligando-o pela aresta E.
+    Remova todas as arestas que ligam a árvore T a ela mesma.
+ </pre>
+ https://algs4.cs.princeton.edu/lectures/43DemoPrim.pdf
 <script>
 let vertices = 12;
 let arestas = new Array();
@@ -27,9 +35,41 @@ arestas.push([9, 12, 2]);
 arestas.push([10, 11, 3]);
 arestas.push([11, 12, 2]);
 
-let naoVisitado = new Array();
+let arvore = new Array();
 let visitado = new Array();
+let naoVisitado = new Array();
+// grafo inteiro não visitado
+naoVisitado = arestas.slice();
+// A partir de um vértice V, que representa a raiz da árvore T,
+visitado.push(arestas[0][0]);
+let raiz = visitado.slice();
+let distancia = 100;
+let menor;
+let comparando = raiz[0];
 
+// Enquanto houverem conexões entre a arvore T e o grafo G:
+while(arvore.length<11) {
+	// Retire do grafo G o vértice U ligado a árvore T pela aresta E de menor custo.
+	for(let i = 0; i < arestas.length; i++){
+		
+		// Adicione o vértice U à árvore T, ligando-o pela aresta E.
+		if(arestas[i][0] == comparando) {
+			if(distancia > arestas[i][2]){
+				menor = arestas[i];
+				distancia = arestas[i][2];
+
+			}
+		}
+
+	}
+	arvore.push(menor);
+	comparando = arestas[1][0];
+	naoVisitado=null; // acabar com o loop q crasha o navegador só pra testes
+}
+
+// n esquecer de remover os nós do grafo
+// visitado n significa que foi pra arvore
+// ao adicionar na arvore, as arestas do grafo passam a ligar na arvore
 
 </script>
 </body>
