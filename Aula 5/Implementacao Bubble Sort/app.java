@@ -1,20 +1,26 @@
 // DOCUMENTACAO https://docs.oracle.com/javase/7/docs/api/java/util/Comparator.html
 // EXEMPLO http://blog.caelum.com.br/ordenando-colecoes-com-comparable-e-comparator/
 // JAVA8 http://blog.caelum.com.br/o-minimo-que-voce-deve-saber-de-java-8/
-public class app implements Comparable {
+import java.util.Collections;
+import java.util.Vector;
 
-	public int compareTo(int v1, int v2) {
-			if (v1 < v2) {
-				return -1;
-			} else if (v1 > v2) {
-				return 1;
-			}
-			return 0;
-		}
-
+public class app {
 	public static void main(String[] args) {
-		int[] numeros = new int[10];
+		Vector<Integer> vector = new Vector<Integer>();
+		vector.add(3);
+		vector.add(7);
+    vector.add(9);
+    vector.add(5);
+    vector.add(6);
+    vector.add(8);
+    vector.add(2);
+    vector.add(1);
+    vector.add(4);
 
-				Collections.sort(numeros);
+		// int[] numeros = {3, 7, 9, 5, 6, 8, 2, 1, 4};
+		System.out.println(vector);
+		Collections.sort(vector);
+		System.out.println(vector);
 	}
+
 }
