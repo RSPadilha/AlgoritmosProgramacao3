@@ -5,11 +5,7 @@ public class RunList {
 		listString.append("This is a test1");
 		listString.append("This is a test2");
 		listString.append("This is a test3");
-		listString.append("This is a test4");
-		listString.append("This is a test5");
-		listString.append("This is a test6");
-		//testa segunda e penultima pos
-		System.out.println(listString.mostraProx());
+		//testa segunda e penultima pos /arrumar
 		System.out.println(listString.percorreInvertido());
 		System.out.println(listString);
 		listInt.append(333);
@@ -19,8 +15,6 @@ public class RunList {
 
 		listString.insert(2, "na 2");
 		listString.insert(3, "na 3");
-		listString.insert(4, "na 4");
-		listString.insert(5, "na 5");
 		listString.insert(100, "inserido com append");
 		System.out.println(listString);
 		System.out.println("Print");
@@ -28,7 +22,7 @@ public class RunList {
 		System.out.println("Invertido \n"+listString.percorreInvertido());
 
 		System.out.println(listString.has("na 2"));
-		listString.remove(50);
+		listString.remove(2);
 		listString.print();
 	}
 }

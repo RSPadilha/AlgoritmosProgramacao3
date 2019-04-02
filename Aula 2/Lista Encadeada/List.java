@@ -1,8 +1,7 @@
 public class List <T> {
-
 	private Node<T> head, tail;
 	private int count = 0;
-
+	//Constructors
 	public List(){}
 	public List(T data){
 		head = new Node<T>(data);
@@ -32,9 +31,6 @@ public class List <T> {
 		}
 	}
 
-	public String mostraProx(){
-		return (String) tail.getPrevious().getData() + "tail\n" +head.getNext().getData()+"head";
-	}
 	public String percorreInvertido(){
 		String retorno = "";
 		Node<T> iter = tail;
