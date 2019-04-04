@@ -74,13 +74,18 @@ public class List <T> {
 		}
 		if(iter == head){
 			head = head.getNext();
-			head.setPrevious(null);
+			if(head!=null){
+				head.setPrevious(null);
+			}
+			count--;
 		}else if(iter == tail){
 			tail.getPrevious().setNext(null);
 			tail = tail.getPrevious();
+			count--;
 		}else{
 			iter.getPrevious().setNext(iter.getNext());
 			iter.getNext().setPrevious(iter.getPrevious());
+			count--;
 		}
 	}
 
