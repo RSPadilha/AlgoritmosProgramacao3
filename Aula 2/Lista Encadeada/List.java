@@ -95,13 +95,13 @@ public class List <T> {
 
 	public boolean has(T data){
 		Node<T> iter = head;
-		while(iter.getData()!= data && iter.getNext() != null){
+		// comparar equals pra string e == pra outros
+		while(!iter.getData().equals(data) && iter.getNext() != null){
 			iter = iter.getNext();
 		}
-		if(iter.getData() == data){
+		if(iter.getData().equals(data)){
 			return true;
-		}
-		else{
+		}	else{
 			return false;
 		}
 	}

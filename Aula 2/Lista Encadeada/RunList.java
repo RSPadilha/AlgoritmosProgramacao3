@@ -1,30 +1,10 @@
 import java.util.Scanner;
 public class RunList {
-	static List<String> listString = new List<>();
+	static List<String> list = new List<>();
 	public static void main(String[] args){
-		List<Integer> listInt = new List<>();
-		// listString.append("This is a test1");
-		// listString.append("This is a test2");
-		// listString.append("This is a test3");
-		// //testa segunda e penultima pos /arrumar
-		// System.out.println(listString.percorreInvertido());
-		// System.out.println(listString);
-		// listInt.append(333);
-		// listInt.append(3683);
-		// listInt.append(353);
-		// System.out.println(listInt+"INT");
-		//
-		// listString.insert(2, "na 2");
-		// listString.insert(3, "na 3");
-		// listString.insert(100, "inserido com append");
-		// System.out.println(listString);
-		// System.out.println("Print");
-		// listString.print();
-		// System.out.println("Invertido \n"+listString.percorreInvertido());
-		//
-		// System.out.println(listString.has("na 2"));
-		// listString.remove(2);
-		// listString.print();
+		list.append("This is a test1");
+		list.append("This is a test2");
+		list.append("This is a test3");
 		menu();
 	}
 
@@ -35,6 +15,7 @@ public class RunList {
 			"	getValue <index>\n"+
 			"	getIndex <value>\n"+
 			"	show\n"+
+			"	inverted\n"+
 			"	equal <index> <index>\n"+
 			"	exist <value>\n"+
 			"	getSize\n"+
@@ -52,13 +33,13 @@ public class RunList {
 			String[] parts = op.split(" ", 2);
 			switch(parts[0]) {
 				case "add":
-				listString.append(parts[1]);
+				list.append(parts[1]);
 				System.out.println("Added "+parts[1]+" to the list");
 					break;
 				case "insert":
 
 				// Prepare to divide index from the message
-					// listString.insert();
+					// list.insert();
 					break;
 				case "getValue":
 				// Create method
@@ -66,28 +47,32 @@ public class RunList {
 				case "getIndex":
 					break;
 					case "show":
-					System.out.println(listString);
+					System.out.println(list);
+					break;
+				case "inverted":
+					System.out.println(list.percorreInvertido());
 					break;
 				case "equal":
 					break;
 				case "exist":
+					System.out.println(list.has(parts[1]));
 					break;
 				case "getSize":
-					System.out.println(listString.getSize());
+					System.out.println(list.getSize());
 					break;
 				case "remove":
-					listString.remove(Integer.parseInt(parts[1]));
+					list.remove(Integer.parseInt(parts[1]));
 					break;
 				case "removeLast":
 				//Tratar quando lista está vazia
-					listString.remove(listString.getSize());
+					list.remove(list.getSize());
 					break;
 				case "removeFirst":
-					listString.remove(1);
+					list.remove(1);
 					break;
 				case "clear":
-					for (int i = listString.getSize(); i > 0; i--) {
-
+					for (int i = list.getSize(); i > 0; i--) {
+						list.remove(i);
 					}
 					break;
 				case "exit":
