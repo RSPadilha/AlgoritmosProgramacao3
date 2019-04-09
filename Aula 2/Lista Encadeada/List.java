@@ -1,9 +1,9 @@
 public class List <T> {
 	private Node<T> head, tail;
-	private int count = 0;
+	private int size = 0;
 	//Constructors
 	public List(){}
-	public List(T data){
+	public List(T data) {
 		head = new Node<T>(data);
 		tail = head;
 	}
@@ -13,12 +13,12 @@ public class List <T> {
 		if(head == null){
 			head = actual;
 			tail = head;
-			count++;
+			size++;
 		}else if(head == tail){
 			head.setNext(actual);
 			tail = actual;
 			tail.setPrevious(head);
-			count++;
+			size++;
 		}else{
 			Node<T> iter = head;
 			while(iter.getNext() != null){
@@ -27,7 +27,7 @@ public class List <T> {
 			iter.setNext(actual);
 			tail = actual;
 			tail.setPrevious(iter);
-			count++;
+			size++;
 		}
 	}
 
@@ -45,7 +45,7 @@ public class List <T> {
 		Node<T> actual = new Node<>(data);
 		Node<T> iter = head;
 		for(int i = 1; i < index; i++){
-			if(index > count){
+			if(index > size){
 				append(data);
 				return;
 			}
@@ -55,7 +55,7 @@ public class List <T> {
 			head.setPrevious(actual);
 			actual.setNext(head);
 			head = actual;
-			count++;
+			size++;
 		}else if(iter == tail){
 			append(data);
 		}else{
@@ -63,13 +63,13 @@ public class List <T> {
 			actual.setNext(iter);
 			actual.getPrevious().setNext(actual);
 			actual.getNext().setPrevious(actual);
-			count++;
+			size++;
 		}
 	}
 
 	public void remove(int index){
 		Node<T> iter = head;
-		for(int i = 1; i < index && i < count; i++){
+		for(int i = 1; i < index && i < size; i++){
 			iter = iter.getNext();
 		}
 		if(iter == head){
@@ -77,20 +77,22 @@ public class List <T> {
 			if(head!=null){
 				head.setPrevious(null);
 			}
-			count--;
+			size--;
 		}else if(iter == tail){
-			tail.getPrevious().setNext(null);
 			tail = tail.getPrevious();
-			count--;
+			tail.setNext(null);
+			// tail.getPrevious().setNext(null);
+			// tail = tail.getPrevious();
+			size--;
 		}else{
 			iter.getPrevious().setNext(iter.getNext());
 			iter.getNext().setPrevious(iter.getPrevious());
-			count--;
+			size--;
 		}
 	}
 
 	public int getSize(){
-		return count;
+		return size;
 	}
 
 	public boolean has(T data){
@@ -106,6 +108,24 @@ public class List <T> {
 		}
 	}
 
+	public void getIndex(T value) {
+		Node<T> iter = head;
+		int count = 0;
+		boolean found = false;
+		while(iter != null) {
+			if (iter.getData().equals(value)) {
+				System.out.println("Found on index: " +(count+1));
+				found = true;
+			}
+			iter = iter.getNext();
+			count++;
+		}
+		if(found == false) {
+			System.out.println("Value not found");
+		}
+	}
+
+	// Can use this one or the toString. Little difference
 	public void print(){
 		Node<T> iter = head;
 		while(iter != null){
@@ -116,13 +136,14 @@ public class List <T> {
 
 	@Override
 	public String toString() {
-		String retorno = "";
+		String listing = "################ Start of the list ################\n";
 		Node<T> iter = head;
 		while(iter != null){
-			retorno += iter.getData() + "\n";
+			listing += iter.getData() + "\n";
 			iter = iter.getNext();
 		}
-		return retorno;
+		listing += "################  End of the list  ################";
+		return listing;
 	}
 
 }
