@@ -12,6 +12,7 @@ public class RunList {
 		String output = "Usage:\n"+
 			"	add <value>\n"+
 			"	insert <index> <value>\n"+
+			"	modify <index> <value>\n"+
 			"	getValue <index>\n"+
 			"	getIndex <value>\n"+
 			"	show\n"+
@@ -23,6 +24,7 @@ public class RunList {
 			"	removeLast\n"+
 			"	removeFirst\n"+
 			"	clear\n"+
+			"	menu\n"+
 			"	exit";
 		System.out.println(output);
 		String op = null;
@@ -45,6 +47,9 @@ public class RunList {
 						System.out.println("Invalid");
 					}
 					break;
+					case "modify":
+					
+						break;
 				case "getvalue":
 					// Criar metodo
 					break;
@@ -83,6 +88,9 @@ public class RunList {
 					for (int i = list.getSize(); i > 0; i--) {
 						list.remove(i);
 					}
+					break;
+				case "menu":
+					System.out.println(output);
 					break;
 				case "exit":
 				return;

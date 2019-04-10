@@ -98,6 +98,9 @@ public class List <T> {
 	public boolean has(T data){
 		Node<T> iter = head;
 		// comparar equals pra string e == pra outros
+		while(iter != null) {
+			
+		}
 		while(!iter.getData().equals(data) && iter.getNext() != null){
 			iter = iter.getNext();
 		}
@@ -110,11 +113,11 @@ public class List <T> {
 
 	public void getIndex(T value) {
 		Node<T> iter = head;
-		int count = 0;
+		int count = 1;
 		boolean found = false;
 		while(iter != null) {
 			if (iter.getData().equals(value)) {
-				System.out.println("Found on index: " +(count+1));
+				System.out.println("Found on index: " +count);
 				found = true;
 			}
 			iter = iter.getNext();
@@ -138,12 +141,24 @@ public class List <T> {
 	public String toString() {
 		String listing = "################ Start of the list ################\n";
 		Node<T> iter = head;
+		int index = 1;
 		while(iter != null){
-			listing += iter.getData() + "\n";
+			listing += index +"- "+ iter.getData() + "\n";
 			iter = iter.getNext();
+			index++;
 		}
 		listing += "################  End of the list  ################";
 		return listing;
+	}
+
+	private Node searchByIndex(int index) {
+		Node<T> iter = head;
+		int count = 1;
+		while(count < index) {
+			iter.getNext();
+			count++;
+		}
+		return iter;
 	}
 
 }
