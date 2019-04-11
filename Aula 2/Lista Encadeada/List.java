@@ -44,11 +44,11 @@ public class List <T> {
 	public void insert(int index, T data){
 		Node<T> actual = new Node<>(data);
 		Node<T> iter = head;
+		if(index > size){
+			append(data);
+			return;
+		}
 		for(int i = 1; i < index; i++){
-			if(index > size){
-				append(data);
-				return;
-			}
 			iter = iter.getNext();
 		}
 		if(iter == head){
@@ -56,8 +56,10 @@ public class List <T> {
 			actual.setNext(head);
 			head = actual;
 			size++;
-		}else if(iter == tail){
-			append(data);
+			// TODO make sure to not lose the tail(not losing atm)
+		// }else if(iter == tail){
+		// 	append(data);
+
 		}else{
 			actual.setPrevious(iter.getPrevious());
 			actual.setNext(iter);
@@ -99,7 +101,7 @@ public class List <T> {
 		Node<T> iter = head;
 		// comparar equals pra string e == pra outros
 		while(iter != null) {
-			
+
 		}
 		while(!iter.getData().equals(data) && iter.getNext() != null){
 			iter = iter.getNext();

@@ -29,7 +29,6 @@ public class RunList {
 		System.out.println(output);
 		String op = null;
 		Scanner input = new Scanner(System.in);
-
 		while(true) {
 			op = input.nextLine();
 			String[] parts = op.split(" ", 2);
@@ -42,13 +41,14 @@ public class RunList {
 					String[] insert = parts[1].split(" ", 2);
 					try {
 						list.insert(Integer.parseInt(insert[0]), insert[1]);
+						// Handle if the number is greater than the size
 						System.out.println("Inserted \""+ insert[1] +"\" at position " +insert[0]);
 					} catch(Exception e) {
 						System.out.println("Invalid");
 					}
 					break;
 					case "modify":
-					
+
 						break;
 				case "getvalue":
 					// Criar metodo
