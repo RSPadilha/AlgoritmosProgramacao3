@@ -22,6 +22,10 @@ public class Node<T> {
 		return previous;
 	}
 
+	public void setData(T data) {
+		this.data = data;
+	}
+
 	public T getData(){
 		return data;
 	}

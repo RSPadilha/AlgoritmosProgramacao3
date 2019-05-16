@@ -113,12 +113,14 @@ public class List <T> {
 		}
 	}
 
+	// A Get function should return the index and the RunList format the output
 	public void getIndex(T value) {
 		Node<T> iter = head;
 		int count = 1;
 		boolean found = false;
 		while(iter != null) {
 			if (iter.getData().equals(value)) {
+				// This class shouldn't have view behavior. Must store and return the data
 				System.out.println("Found on index: " +count);
 				found = true;
 			}
@@ -128,6 +130,19 @@ public class List <T> {
 		if(found == false) {
 			System.out.println("Value not found");
 		}
+	}
+
+	public T getValue(int index) {
+		Node<T> iter = head;
+		
+	}
+
+	public void modify(int index, T value) {
+		Node<T> iter = head;
+		for(int i = 1; i < index && i < size; i++){
+			iter = iter.getNext();
+		}
+		iter.setData(value);
 	}
 
 	// Can use this one or the toString. Little difference

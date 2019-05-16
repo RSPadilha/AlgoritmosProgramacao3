@@ -2,9 +2,9 @@ import java.util.Scanner;
 public class RunList {
 	static List<String> list = new List<>();
 	public static void main(String[] args){
-		// list.append("This is a test1");
-		// list.append("This is a test2");
-		// list.append("This is a test3");
+		list.append("This is a test1");
+		list.append("This is a test2");
+		list.append("This is a test3");
 		menu();
 	}
 
@@ -43,26 +43,39 @@ public class RunList {
 						list.insert(Integer.parseInt(insert[0]), insert[1]);
 						// Handle if the number is greater than the size
 						System.out.println("Inserted \""+ insert[1] +"\" at position " +insert[0]);
-					} catch(Exception e) {
+					} catch (Exception e) {
 						System.out.println("Invalid");
 					}
 					break;
-					case "modify":
-
-						break;
+				case "modify":
+					String[] modify = parts[1].split(" ", 2);
+					try {
+						list.modify(Integer.parseInt(modify[0]), modify[1]);
+					} catch (Exception e) {
+						System.out.println("Invalid");
+					}
+					break;
 				case "getvalue":
-					// Criar metodo
+					try {
+						int in = Integer.parseInt(parts[1]);
+						// Want to declare a generic type here. If this not work, can change to Strin, in this case
+						Object val = list.getValue(in);
+						System.out.println(val);
+					} catch (Exception e) {
+						System.out.println("Invalid");
+					}
 					break;
 				case "getindex":
 					list.getIndex(parts[1]);
 					break;
-					case "show":
+				case "show":
 					System.out.println(list);
 					break;
 				case "inverted":
 					System.out.println(list.percorreInvertido());
 					break;
 				case "equal":
+				// Criar metodo
 					break;
 				case "has":
 					System.out.println(list.has(parts[1]));
