@@ -41,6 +41,14 @@ public class List <T> {
 		return retorno;
 	}
 
+	public boolean equal(int index1, int index2) {
+		if (getValue(index1).equals(getValue(index2))) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	public void insert(int index, T data){
 		Node<T> actual = new Node<>(data);
 		Node<T> iter = head;
@@ -100,10 +108,7 @@ public class List <T> {
 	public boolean has(T data){
 		Node<T> iter = head;
 		// comparar equals pra string e == pra outros
-		while(iter != null) {
-
-		}
-		while(!iter.getData().equals(data) && iter.getNext() != null){
+			while(!iter.getData().equals(data) && iter.getNext() != null){
 			iter = iter.getNext();
 		}
 		if(iter.getData().equals(data)){
@@ -134,7 +139,13 @@ public class List <T> {
 
 	public T getValue(int index) {
 		Node<T> iter = head;
-		
+		if (index > size || index < 1) {
+			return null;
+		}
+		for(int i = 1; i < index; i++) {
+			iter = iter.getNext();
+		}
+		return iter.getData();
 	}
 
 	public void modify(int index, T value) {

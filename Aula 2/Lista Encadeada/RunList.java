@@ -33,6 +33,7 @@ public class RunList {
 			op = input.nextLine();
 			String[] parts = op.split(" ", 2);
 			switch(parts[0].toLowerCase()) {
+				// Treat case there's no second part in the array(missing arguments)
 				case "add":
 				list.append(parts[1]);
 				System.out.println("Added \""+parts[1]+"\" to the list");
@@ -60,7 +61,12 @@ public class RunList {
 						int in = Integer.parseInt(parts[1]);
 						// Want to declare a generic type here. If this not work, can change to Strin, in this case
 						Object val = list.getValue(in);
-						System.out.println(val);
+						if (val == null) {
+							// List resposability to tell the error, but cannot return String
+							System.out.println("Invalid index");
+						} else {
+							System.out.println(val);
+						}
 					} catch (Exception e) {
 						System.out.println("Invalid");
 					}
@@ -75,7 +81,13 @@ public class RunList {
 					System.out.println(list.percorreInvertido());
 					break;
 				case "equal":
-				// Criar metodo
+				try {
+					String[] equal = parts[1].split(" ", 2);
+					boolean result = list.equal(Integer.parseInt(equal[0]), Integer.parseInt(equal[1]));
+					System.out.println(result);
+					} catch (Exception e) {
+						System.out.println("Invalid");
+					}
 					break;
 				case "has":
 					System.out.println(list.has(parts[1]));
